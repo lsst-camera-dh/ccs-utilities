@@ -18,6 +18,7 @@ foundtrends = false
 foundts     = false
 foundarchon = false
 
+ccsdir = os.getenv("CCS_BIN_DIR");
 
 def updatestat():
     global foundjython
@@ -84,7 +85,7 @@ def updatestat():
             apptxtA = "Jython Console"
 
             def startjy(apptxtA):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./JythonConsole"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--title=JythonConsole","--working-directory=%s" % ccsdir,"--command=screen -S jython ./JythonConsole"]);
 #    tkMessageBox.showinfo( "Started Jython Console", "Started Jython Console")
                 A.configure(text = "Started %s" % apptxtA, bg = "blue")
 
@@ -96,7 +97,7 @@ def updatestat():
 
             apptxtB = "Trending Persister"
             def starttrendp(apptxtB):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./trendingPersister"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--working-directory=%s" % ccsdir,"--command=screen -S TrendingPersister ./trendingPersister"]);
                 B.configure(text = "Started %s" % apptxtB, bg = "blue")
 
             if not foundtrendp :
@@ -107,7 +108,7 @@ def updatestat():
 
             apptxtC = "Trending Server"
             def starttrends(apptxtC):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./trendingServer"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--working-directory=%s" % ccsdir,"--command=screen -S TrendingServer ./trendingServer"]);
                 C.configure(text = "Started %s" % apptxtC, bg = "blue")
 
             if not foundtrends :
@@ -118,7 +119,7 @@ def updatestat():
 
             apptxtD = "TestStand SubSystem"
             def startts(apptxtD):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./ts"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--title=ts","--working-directory=%s" % ccsdir,"--command=screen -S ts ./ts"]);
                 D.configure(text = "Started %s" % apptxtD, bg = "blue")
 
             if not foundts :
@@ -127,7 +128,7 @@ def updatestat():
 
             apptxtE = "Archon subsystem"
             def startarchon(apptxtE):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./archon"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--title=archon","--working-directory=%s" % ccsdir,"--command=screen -S archon ./archon"]);
                 E.configure(text = "Started %s" % apptxtE, bg = "blue")
 
             if not foundarchon :
@@ -135,7 +136,7 @@ def updatestat():
                 E = Tkinter.Button(top, text ="Start %s" % apptxtE, command = lambda : startarchon(apptxtE), bg = "grey")
             apptxtF = "CCS Gui"
             def startgui(apptxtF):
-                subprocess.Popen(["gnome-terminal","--zoom=0.5","--command=./settitle ./CCS-Console"]);
+                subprocess.Popen(["gnome-terminal","--zoom=0.5","--working-directory=%s" % ccsdir,"--command=./settitle ./CCS-Console"]);
                 F.configure(text = "Started %s" % apptxtF, bg = "blue")
 
             F = Tkinter.Button(top, text ="Start a %s" % apptxtF, command = lambda : startgui(apptxtF), bg = "grey")
